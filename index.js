@@ -3,15 +3,16 @@ import http from 'node:http';
 import https from 'node:https';
 import { createInterface } from 'node:readline';
 
-// TODO: Step 1 - Get the filename from process.argv
+// Get the filename from process.argv
 const fileName = process.argv[2];
+
 // If no filename is provided, print an error and exit.
 if (!fileName) {
     console.error('Please provide a filename. Usage: node index.js <filename>');
     process.exit(1);
 };
 
-// TODO: Step 2 - Read the file and parse it into an array of URLs (lines)
+// Read the file and parse it into an array of URLs (lines)
 
 const readFile = async (file) => {
     const fileStream = createReadStream(file);
@@ -39,12 +40,13 @@ if (urls.length === 0) {
 
 console.log('🦅 Health Hawk is on the hunt...\n');
 
-// TODO: Step 3 - Define the checkUrl function
+// Define the checkUrl function
 const checkUrl = (url) => {
     // This function should return a Promise.
     return new Promise((resolve) => {
 
-        // TODO:
+        const startTime = Date.now();
+
         // 1. Determine if the URL is http or https to choose the right module.
         const protocol = url.startsWith('https') ? https : url.startsWith('http') ? http : null;
         if (!protocol) {
@@ -59,7 +61,6 @@ const checkUrl = (url) => {
             }
         };
 
-        const startTime = Date.now(); // We can use this for now.
         // 2. Create the HTTP GET request.
         const req = protocol.request(parsedUrl, options, (res) => {
             let body = '';
@@ -75,13 +76,13 @@ const checkUrl = (url) => {
                 };
             });
 
-            // 4. On error, resolve with a result object containing { url, error: err.message, duration, success: false }.
-            res.on('error', (err) => {
-                const duration = Date.now() - startTime;
-                return resolve({ url, error: err.message, duration, success: false });
-            });
+            // res.on('error', (err) => {
+            //     const duration = Date.now() - startTime;
+            //     return resolve({ url, error: err.message, duration, success: false });
+            // });
         });
 
+         // 4. On error, resolve with a result object containing { url, error: err.message, duration, success: false }.
         req.on('error', (err) => {
             const duration = Date.now() - startTime;
             return resolve({ url, error: err.message, duration, success: false });
@@ -89,8 +90,9 @@ const checkUrl = (url) => {
 
         // 5. Set a timeout (req.setTimeout) to abort slow requests and trigger an error.
         req.setTimeout(5000, () => {
-        req.destroy();
-        console.error('Request timed out');
+            req.destroy();
+            const duration = Date.now() - startTime;
+            resolve({ url, error: "Timeout", duration, success: false });
         });
 
         req.end();
@@ -108,9 +110,6 @@ const runHealthCheck = async () => {
 
     // 4b. Use Promise.allSettled to wait for all these promises to finish.
     const results = await Promise.allSettled(promises);
-
-
-    
 
     // 4c. Loop through the settled results.
         // For each result, print a status (✅/❌), the URL, the status/error, and the duration.
