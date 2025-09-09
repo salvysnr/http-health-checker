@@ -1,0 +1,5 @@
+https://httpbin.org/status/200
+https://httpbin.org/status/404
+https://httpbin.org/status/500
+https://httpbin.org/delay/10  
+https://this-domain-does-not-exist-78392.com
