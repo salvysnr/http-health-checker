@@ -1,0 +1,32 @@
+[
+  {
+    "url": "https://httpbin.org/status/200",
+    "status": 200,
+    "duration": 1723,
+    "success": true
+  },
+  {
+    "url": "https://httpbin.org/status/404",
+    "status": 404,
+    "duration": 2298,
+    "success": false
+  },
+  {
+    "url": "https://httpbin.org/status/500",
+    "status": 500,
+    "duration": 2037,
+    "success": false
+  },
+  {
+    "url": "https://httpbin.org/delay/10",
+    "error": "Timeout",
+    "duration": 5892,
+    "success": false
+  },
+  {
+    "url": "https://this-domain-does-not-exist-78392.com",
+    "error": "getaddrinfo ENOTFOUND this-domain-does-not-exist-78392.com",
+    "duration": 121,
+    "success": false
+  }
+]
