@@ -6,20 +6,20 @@ It supports concurrency, retries, JSON export, and a watch mode to monitor healt
 
 ---
 
-## ✨ Features
-- 🚀 Concurrent health checks (with a concurrency cap)
-- 🔄 Automatic retries for failed requests
-- ⏱️ Latency measurement for each URL
-- 📜 JSON export of results
-- 👀 Watch mode for continuous monitoring
-- 🎨 Colorful CLI output with [chalk](https://www.npmjs.com/package/chalk)
+## Features
+-  Concurrent health checks (with a concurrency cap)
+-  Automatic retries for failed requests
+-  Latency measurement for each URL
+-  JSON export of results
+-  Watch mode for continuous monitoring
+-  Colourful CLI output with [chalk](https://www.npmjs.com/package/chalk)
 
 ---
 
-## 📦 Installation
+## Installation
 Clone this repository and install dependencies:
 
-git clone https://github.com/yourusername/health-hawk.git
+git clone https://github.com/salvysnr/health-hawk.git
 cd health-hawk
 npm install
 
@@ -36,6 +36,8 @@ Where `urls.txt` contains a list of URLs (one per line):
 https://example.com
 http://myapi.dev/health
 https://google.com
+https://httpbin.org/status/200
+https://httpbin.org/status/404
 
 ---
 
@@ -90,21 +92,21 @@ Continuously checks health every 60 seconds.
 
 ---
 
-## 📊 Output Summary
+## Output Summary
 At the end of each run, you’ll see a summary like:
 
 🦅 Health Hawk Summary: 8/10 healthy
 
 ---
 
-## ⚙️ Tech Stack
+## Tech Stack
 - [Node.js](https://nodejs.org/) (built-in `http`, `https`, `fs`, `readline`)
 - [p-limit](https://www.npmjs.com/package/p-limit) (for concurrency)
-- [chalk](https://www.npmjs.com/package/chalk) (for colored CLI output)
+- [chalk](https://www.npmjs.com/package/chalk) (for coloured CLI output)
 
 ---
 
-## 🚧 Roadmap / Future Ideas
+## Roadmap / Future Ideas
 - Parallel HEAD + GET fallback (for servers that block HEAD)
 - Configurable concurrency levels
 - Slack/email/webhook alerts for unhealthy URLs
@@ -112,6 +114,6 @@ At the end of each run, you’ll see a summary like:
 
 ---
 
-## 📜 License
-MIT License © 2025 [Your Name]
+## License
+MIT License © 2025 [Salvation Otubu]
 
