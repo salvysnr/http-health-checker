@@ -33,11 +33,11 @@ node index.js urls.txt
 
 Where `urls.txt` contains a list of URLs (one per line):
 
-https://example.com
-http://myapi.dev/health
-https://google.com
-https://httpbin.org/status/200
-https://httpbin.org/status/404
+- https://example.com
+- http://myapi.dev/health
+- https://google.com
+- https://httpbin.org/status/200
+- https://httpbin.org/status/404
 
 ---
 
